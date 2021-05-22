@@ -1,0 +1,60 @@
+{% extends 'project/guide_templates/base_template.html' %}
+{% load static %}
+{% block content %}
+    <head>
+        <style>
+            h2{
+            
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: #333;
+            padding-bottom: 10px;
+            padding-left : 30px;
+        }
+        h2:after{
+            content: '';
+            background: #333;
+            display: block;
+            height: 3px;
+            width: 300px;
+            
+        }
+        </style>
+    </head>
+    <h2> Guide Dashboard </h2>
+
+    <section class="container">
+        
+        <div class="col-md-10">
+            
+            <table class="table table-bordered table-hover table-secondary" style="font-size:20px;table-layout:fixed;text-align:center;">
+                <thead>
+                    <th>Title</th>
+                    <th>Info</th>
+                </thead>
+                <tbody>
+                <tr>
+                    <td> Total Teams Under Me</td>
+                    <td> {{ total_teams }} </td>
+                </tr>
+
+                <tr>
+                    <td> Total Projects Under Me</td>
+                    <td> {{ total_projects }} </td>
+                </tr>
+                <tr>
+                    <td> Total Students Under Me</td>
+                    <td> {{ total_students }} </td>
+                </tr>
+                </tbody>
+            </table> 
+        <h3>Project Approval Workflow</h3>
+        <p style="text-align:justify; width:700px; ">Projects can be submitted for approval along with required canvases and reports.
+                Team members can collaborate and share information as well as upload documents.
+                Once the document is approved, it can be pushed into Database.
+             </p>
+        <img src="{% static 'project/workflow.png' %}" alt="progress Workflow" width="700px">
+        </div>  
+    </section>
+
+{% endblock  %}

@@ -1,0 +1,43 @@
+{% extends 'project/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+      <div class="content-section mt-5">
+        <form action="{% url 'doLogin' %}" method="POST">
+          {% csrf_token %}
+          <fieldset class="form-group">
+            {% if messages %}
+              <div class="col-12">
+                {% for message in messages %}
+                  {% if message.tags == "error" %}
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert" style="margin-top: 10px;">
+                        {{ message }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                  {% endif %}
+                {% endfor %}
+             </div>
+          {% endif %}
+            <legend class="border-bottom mb-4">Log In</legend>
+              <div class="input-group mb-4">
+                <input type="email" class="form-control" placeholder="Email" name="email">
+              </div>
+            <div class="input-group mb-4">
+              <input type="password" class="form-control" placeholder="Password" name="password">   
+            </div>
+              {{ form|crispy }}
+          </fieldset>
+          <div class="form-group">
+            <button type="submit" class="btn btn-outline-info" name="button">Login</button>
+            <small class="text-muted ml-2">
+              <a href="{% url 'password_reset' %}">Forgot Password</a>
+            </small>
+          </div>
+        </form>
+        
+      </div>
+
+     
+{% endblock content %}

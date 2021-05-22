@@ -1,0 +1,70 @@
+{% extends 'project/student_templates/base_template.html' %}
+{% load static %}
+{% block content %}
+    <head>
+        <style>
+            h2{
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: #333;
+            padding-bottom: 10px;
+        }
+        h2:after{
+            content: '';
+            background: #333;
+            display: block;
+            height: 3px;
+            width: 170px;
+            
+        }
+        </style>
+    </head>
+    <h2> Team Info </h2>
+
+    <section class="container">
+
+        {% for m in members %}
+            
+                <div class="row">
+                <table class="table table-bordered table-hover table-secondary " style="font-size:20px;table-layout:fixed;">
+                <thead>
+                    <tr>
+                        <h3><th>Member </th></h3>
+                        <h3><th>Info</th></h3>               
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Student Name</td>
+                        <td> {{ m.admin.first_name }} {{ m.admin.last_name }}</td>
+                    </tr>
+                    <tr>
+                        <td>Email Address</td>
+                        <td> {{ m.admin.email }}</td>
+                    </tr>
+                    <tr>
+                        <td>Semester</td>
+                        <td> {{ m.sem }}</td>
+                    </tr>
+                    <tr>
+                        <td>Enrollment No</td>
+                        <td> {{ m.enrollment_no }}</td>
+                    </tr>
+                    <tr>
+                        <td>Department</td>
+                        <td> {{ m.department }}</td>
+                    </tr>
+                    <tr>
+                        <td>Phone No</td>
+                        <td> {{ m.phon_no }}</td>
+                    </tr> 
+                <tbody>       
+                </table>
+                </div>
+            
+            {% endfor %}
+         
+        
+    </section>
+
+{% endblock  %}

@@ -1,0 +1,108 @@
+{% extends 'project/student_templates/base_template.html' %}
+{% load static %}
+{% block content %}
+    <head>
+        <style>
+            h2{
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: #333;
+            padding-bottom: 10px;
+        }
+        h2:after{
+            content: '';
+            background: #333;
+            display: block;
+            height: 3px;
+            width: 250px;          
+        }
+        a:link,a:visited{
+            color:black;
+        }
+        a:hover {
+            text-decoration : none;
+            color : blue;
+        }
+        
+        </style>
+    </head>
+
+    <a class="btn btn-primary" style="color:white;" href="{% url 'student_edit_project' projects.p_id %}" role="button">+ Update Project</a> <br/>&nbsp;
+    <h2> Project Details </h2>
+
+    <section class="container">
+        
+        <div class="row">
+            <table class="table table-bordered table-hover table-secondary" style="font-size:20px; table-layout:fixed;">
+            <thead>
+                <tr>
+                    <h3><th>Title</th></h3>
+                    <h3><th>Info</th></h3>               
+                </tr>
+            </thead>
+            <tbody>
+               <tr>
+                    <td>Project Name</td>
+                    <td> {{ projects.title }}</td>
+                </tr>
+                <tr>
+                    <td>Project ID</td>
+                    <td> {{ projects.p_id }}</td>
+                </tr>
+                <tr>
+                    <td>Project Status</td>
+                    <td> {{ projects.status }}</td>
+                </tr>
+            <tbody>       
+            </table>
+
+            <div class="col-md-12" style="border: 1px solid black;">
+                    
+                    <h3 style="color:black;">Project Description :-</h3> 
+                    <hr>
+                    <h6 style="text-align:justify;"> <i class="fa fa-arrow-right pr-2"></i> {{ projects.description }} </h6>
+
+            </div>
+            <div class="col-md-12" style="border: 1px solid black; margin-top:10px;">
+                    
+                    <h3 style="color:black;">Project Report :-</h3> 
+                    <hr>
+                    <h6 style="text-align:justify;"> <i class="fa fa-arrow-right pr-2"></i> <a href="{{projects.report}}" download="{{projects.report}}"> Click Here To Download Report</a> </h6>
+            </div>
+        </div>     
+
+    <h2 style="padding-top:20px;">Guide Details </h2>
+        <div class="row">
+            <table class="table table-bordered table-hover table-secondary" style="font-size:20px; table-layout:fixed;">
+            <thead>
+                <tr>
+                    <h3><th>Title</th></h3>
+                    <h3><th>Info</th></h3>               
+                </tr>
+            </thead>
+            <tbody>
+               <tr>
+                    <td>Guide Name</td>
+                    <td> {{ t_obj.guide_id.admin.first_name }} {{t_obj.guide_id.admin.last_name}}</td>
+                </tr>
+                <tr>
+                    <td>Guide Email</td>
+                    <td> {{ t_obj.guide_id.admin.email }}</td>
+                </tr>
+                <tr>
+                    <td>Guide Department</td>
+                    <td> {{ t_obj.guide_id.department }}</td>
+                </tr>
+                <tr>
+                    <td>Give Feedbacks</td>
+                    {% url 'student_feedback' as student_feedback %}
+                    <td> <a href={{ student_feedback }}> Feedback </a></td>
+            <tbody>       
+            </table>
+        </div>
+        
+    </section>
+
+    
+
+{% endblock  %}

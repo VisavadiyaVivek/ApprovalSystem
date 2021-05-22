@@ -1,0 +1,70 @@
+{% extends 'project/guide_templates/base_template.html' %}
+{% load static %}
+{% block content %}
+    <head>
+        <style>
+            h2{
+            
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: #333;
+            padding-bottom: 10px;
+            padding-left : 30px;
+        }
+        h2:after{
+            content: '';
+            background: #333;
+            display: block;
+            height: 3px;
+            width: 240px;
+            
+        }
+        a:link , a:visited {
+            color : black;
+        }
+        a:hover {
+            text-decoration: none;
+            color : blue;
+        }
+
+        </style>
+    </head>
+    <h2> Teams Details </h2>
+
+    <section class="container">
+        
+            <table class="table table-bordered  table-secondary" style="font-size:18px;table-layout:fixed;">
+
+                <thead style="text-align:center"> 
+                    <th>Team ID</th>
+                    <th>Team Name</th>
+                    <th>Project ID</th>
+                    <th>Project Name</th>
+                    <th>Team Members</th>
+                </thead>
+                <tbody>
+                    {% for t,s in data_list %}
+                        <tr style="text-align:center">
+                            <td>{{ t.id }}</td>
+                            <td>{{ t.name }}</td>
+                            <td>{{ t.p_id.p_id }}</td>
+                            <td><a href="{% url 'guide_project_view' t.p_id.p_id %}" >{{ t.p_id.title }} </a></td>
+                        <td>
+                        <ol class="pl-4">
+                        {% for student in s %}
+                        <a href="{% url 'student_detail_view' student.id %}"><li>{{ student.admin.first_name }} {{student.admin.last_name}}</li> </a>                    
+                        {% endfor %}
+                        </ol>
+                        </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+                
+
+            </table>
+        
+        </div>
+        
+        
+        </section>
+{% endblock  %}

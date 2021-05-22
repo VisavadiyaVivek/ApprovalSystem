@@ -1,0 +1,92 @@
+{% extends 'project/hod_templates/base_template.html' %}
+
+{% block content %}
+
+{% load static %}
+    <head>
+        <style>
+            h2{
+            
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: #333;
+            padding-bottom: 10px;
+            padding-left : 30px;
+        }
+        h2:after{
+            content: '';
+            background: #333;
+            display: block;
+            height: 3px;
+            width: 260px;
+            
+        }
+        a:link , a:visited {
+            color : black;
+        }
+        a:hover {
+            text-decoration: none;
+            color : blue;
+        }
+
+        </style>
+    </head>
+<section class="container">
+        <h2> Student Details </h2>
+        <div class="row">
+
+            <table class="table table-bordered  table-secondary" style="font-size:18px;table-layout:fixed;">
+
+                <thead>
+                    <tr>
+                    <h3><th>Student</th></h3>
+                    <h3><th>Info</th></h3>   
+                    </tr>               
+                </thead>
+                <tbody>
+                <tr>
+                    <td> Student Name </td>
+                    <td>{{ student.admin.first_name }} {{student.admin.last_name }}</td>
+                </tr>
+                <tr>
+                    <td> Student Email </td>
+                    <td> {{ student.admin.email }} </td>
+                </tr>
+                <tr>
+                    <td> Student Department </td>
+                    <td> {{ student.department }} </td>
+                </tr>
+                <tr>
+                    <td> Student Enrollment No </td>
+                    <td> {{ student.enrollment_no }} </td>
+                </tr>
+                <tr>
+                    <td> Student Semester </td>
+                    <td> {{ student.sem }} </td>
+                </tr>
+                <tr>
+                    <td> Student Phone No </td>
+                    <td> {{student.phon_no}} </td>
+                </tr>  
+                <tr>
+                    <td> Project Leader </td>
+                    <td> {% if student.leader == 'False'%} NO {% else %} YES {% endif %}</td>
+                </tr> 
+                </tbody>
+                
+
+            </table>
+
+        {% comment %} <div class="col-md-12" style="border: 1px solid black;">
+                    
+        {% comment %} <h3>Student Feedback :-</h3> 
+        <hr>
+        <h6 style="text-align:justify;"> <i class="fa fa-arrow-right pr-2"></i> <a href="{% url 'guide_student_feedback' %}"> View FeedBacks </a></h6>
+        </div> 
+        </div>  {% endcomment %}
+        </div>
+        
+        
+</section>
+
+{% endblock content %}

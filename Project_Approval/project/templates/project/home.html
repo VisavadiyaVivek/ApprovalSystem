@@ -1,0 +1,22 @@
+{% extends 'project/base.html' %}
+{% load static %}
+{% block content %}
+ 
+   <div class="default-section">
+
+        <h2>Online Project Explorer</h2>
+        <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop" width="700px">
+          <source src="{% static 'project/project.mp4' %}" type='video/mp4'>
+        </video>
+        <br>
+        <br>
+        
+        <h3>Project Approval Workflow</h3>
+        <p style="text-align:justify; width:700px; ">Projects can be submitted for approval along with required canvases and reports.
+                Team members can collaborate and share information as well as upload documents.
+                Once the document is approved, it can be pushed into Database.
+             </p>
+        <img src="{% static 'project/workflow.png' %}" alt="progress Workflow" width="700px">
+   </div>
+   
+{% endblock content %}

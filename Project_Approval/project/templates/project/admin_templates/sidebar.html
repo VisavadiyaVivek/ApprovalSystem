@@ -1,0 +1,129 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static 'project/main.css' %}">
+        <link rel="stylesheet" href="{% static "fontawesome-free/css/all.min.css" %}">
+        <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <style>
+        
+
+  .sidebar {
+  
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 56px;
+  left: 0;
+  background-color: #32777c;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidebar a {
+  padding: 8px 8px 8px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #cbd5db;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: white;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 30px;
+  margin-left: 50px;
+}
+
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #32777c;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
+.d-block {
+  margin-left : 5px;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+
+
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+}
+  </style>
+    </head>
+<body>
+    <button class="openbtn" onclick="openNav()">☰ Menu</button>  
+    
+    <div class="sidebar" id="mySidebar">
+        <div class="info">
+            <a href="{% url 'admin_profile' %}" class="d-block"><i class="fas fa-user pr-3"></i>{{ user.first_name }} {{ user.last_name }}</a>
+        </div>
+        <div class="info">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+        </div>
+
+        <hr style="background:white">
+        <div class="info">
+            <a href="{% url 'add_hod' %}" class="d-block"><li><i class="fas fa-database "></i>Add HOD</li></a>
+        </div>
+         <div class="info">
+            <a href="{% url 'manage_hod' %}" class="d-block"><li><i class="fas fa-chalkboard-teacher"></i>Manage HOD</li></a>
+        </div>
+         <div class="info">
+            <a href="{% url 'add_guide' %}" class="d-block"><li><i class="fas fa-database "></i>Add Guide</li></a>
+        </div>
+         <div class="info">
+            <a href="{% url 'manage_guide' %}" class="d-block"><li><i class="fas fa-chalkboard-teacher"></i>Manage Guide</li></a>
+        </div>
+         <div class="info">
+            <a href="{% url 'add_student' %}" class="d-block"><li><i class="fas fa-database "></i>Add Student</li></a>
+        </div>
+         <div class="info">
+            <a href="{% url 'manage_student' %}" class="d-block"><li><i class="fas fa-user-graduate "></i>Manage Student</li></a>
+        </div>
+         <div class="info">
+            <a href="{% url 'add_project' %}" class="d-block"><li><i class="fas fa-database "></i>Add Project</li></a>
+        </div>
+         <div class="info">
+            <a href="{% url 'manage_project' %}" class="d-block"><li><i class="fas fa-project-diagram "></i>Manage Project</li></a>
+        </div>
+         <div class="info">
+            <a href="{% url 'add_team' %}" class="d-block"><li><i class="fas fa-database "></i>Add Team</li></a>
+        </div>
+         <div class="info">
+            <a href="{% url 'manage_team' %}" class="d-block"><li><i class="fas fa-users "></i>Manage Team</li></a>
+        </div>
+
+    
+         
+         
+    </div>
+
+ <script>
+function openNav() {
+  document.getElementById("mySidebar").style.width = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidebar").style.width = "0";
+  document.getElementById("main").style.marginLeft= "0";
+}
+</script>
+</body>
+</html> 

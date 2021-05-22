@@ -1,0 +1,31 @@
+{% extends 'project/student_templates/base_template.html' %}
+
+
+{% block content %}
+
+{% load static %}
+
+<section class="content">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-md-12">
+                    
+                    <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Project Details</h3>
+                    </div>
+                    
+                    {% url 'student_project_update' as path_action %}
+                    {% include 'project/student_templates/student_form_template.html' with messages=messages form=form path_action=path_action button_text="Update Project" %}
+
+                    </div>
+                    
+
+                </div>
+            </div>
+
+        </div>
+      </section>
+
+  {% endblock content %}

@@ -1,0 +1,118 @@
+{% extends 'project/admin_templates/manage_base.html' %}
+
+{% block content %}
+
+{% load static %}
+
+
+
+<section class="content">
+        <h2 >Manage Student</h2>
+        <hr>
+        <div class="container-fluid">
+
+            <a class="btn btn-primary" href="{% url 'add_student' %}" role="button">+ Add Student</a> <br/>&nbsp;
+
+            {% if messages %}
+                                <div class="form-group">
+                                <div class="col-12">
+                                    {% for message in messages %}
+                                    {% if message.tags == "error" %}
+                                        <div class="alert alert-danger alert-dismissible fade show" role="alert" style="margin-top: 10px;">
+                                        {{ message }}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        </div>
+                                    {% elif message.tags == "success" %}
+                                        <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin-top: 10px;">
+                                        {{ message }}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        </div>
+                                    {% endif %}
+                                    {% endfor %}
+                                </div>
+                                </div>
+                                {% endif %}
+
+            <div class="row">
+
+                <div class="col-md-12">
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Student Details</h3>
+
+                            <div class="card-tools float-right">
+                            <form method="GET">
+                            <div class="input-group input-group-sm" style="width: 250px;">
+                                <input type="text" name="query" class="form-control" placeholder="Search">
+
+                                <div class="input-group-append">
+                                <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
+                                </div>
+                            </div>
+                            </form>
+                            </div>
+                        </div>
+
+                        <div class="card-body table-responsive p-0">
+                            <table class="table table-hover text-nowrap">
+                            <thead>
+                                <tr>
+                                <th>ID</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Username</th>
+                                <th>Email</th>
+                                <th>Semester</th>
+                                <th>Enrollment No</th>
+                                <th>Department</th>
+                                <th>Project</th>
+                                <th>Leader</th>
+                                <th>Phone No</th>
+                                <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% if students %}
+                                {% for s in students %}
+                                <tr>
+                                <td>{{ s.admin.id }}</td>
+                                <td>{{ s.admin.first_name }}</td>
+                                <td>{{ s.admin.last_name }}</td>
+                                <td>{{ s.admin.username }}</td>
+                                <td>{{ s.admin.email }}</td>
+                                <td style="text-align:center;">{{ s.sem }}</td>
+                                <td>{{ s.enrollment_no }}</td>
+                                <td>{{ s.department }}</td>
+                                <td>{{ s.team_id.p_id.title }}</td>
+                                <td>{{ s.leader }}</td>
+                                <td>{{ s.phon_no }}</td>
+                                <td>
+                                    <a href="{% url 'edit_student' s.admin.id %}" class="btn btn-success">Edit</a>
+                                    <a href="{% url 'delete_student' s.admin.id %}" class="btn btn-danger">Delete</a>
+                                </td>
+                                </tr>
+                                {% endfor %}
+                            
+                                {% else %}
+                                    <h4 style="color:red"> Student not available. Try again !!!</h4>
+                                {% endif %}
+
+                            </tbody>
+                            </table>
+                        </div>
+
+                        </div>
+
+
+                </div>
+            </div>
+
+        </div>
+      </section>
+
+  {% endblock content %}
